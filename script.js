@@ -54,13 +54,13 @@ $(document).ready(function() {
     ScrollReveal().reveal(".header a, .profile-photo, .about-content, .education", {
       origin: "left"
     });
-    ScrollReveal().reveal(".header ul, .profile-text, .about-skills, .internship", {
+    ScrollReveal().reveal(".header ul, .profile-text, .about-skills, .experience", {
       origin: "right"
     });
-    ScrollReveal().reveal(".project-title, .contact-title", {
+    ScrollReveal().reveal(".project-title, .contact-title, .skills-title", {
       origin: "top"
     });
-    ScrollReveal().reveal(".projects, .contact", {
+    ScrollReveal().reveal(".projects, .contact, .skills-grid", {
       origin: "bottom"
     });
 
@@ -111,4 +111,118 @@ $(document).ready(function() {
   }
   
 
- 
+
+// Project Modal Functions
+function openProjectModal(projectId) {
+  const modal = document.getElementById('projectModal');
+  const modalBody = document.getElementById('modalBody');
+  
+  const projectData = {
+    project1: {
+      title: "Gesture Controlled Prosthetic Limbs",
+      description: "An innovative prosthetic limb system that responds to hand gestures, providing intuitive control for amputees. The system uses advanced sensors to detect muscle movements and translates them into precise limb movements.",
+      features: [
+        "Real-time gesture recognition using EMG sensors",
+        "Wireless communication between control unit and prosthetic",
+        "Customizable gesture mapping for different users",
+        "Battery life optimization for all-day use",
+        "Lightweight and durable design"
+      ],
+      technologies: ["Arduino", "EMG Sensors", "Servo Motors", "Bluetooth", "3D Printing"]
+    },
+    project2: {
+      title: "Electronic Voting Machine 2.0",
+      description: "A secure and user-friendly electronic voting system with RFID authentication, featuring separate admin and voter interfaces with real-time result tracking.",
+      features: [
+        "RFID-based voter authentication",
+        "Separate admin and candidate access levels",
+        "Interactive LCD display for voting instructions",
+        "Real-time vote counting and result display",
+        "Tamper-proof design with security features"
+      ],
+      technologies: ["Arduino", "RFID", "LCD Display", "Keypad", "EEPROM"]
+    },
+    project3: {
+      title: "RFID Based Smart Cycle Parking System",
+      description: "A smart parking solution for bicycles using RFID technology to provide secure, automated locking and tracking of parked cycles in public spaces.",
+      features: [
+        "RFID card-based access control",
+        "Automated locking mechanism",
+        "Real-time parking slot availability",
+        "User registration and management system",
+        "Anti-theft security features"
+      ],
+      technologies: ["Arduino", "RFID", "Servo Motors", "LCD", "Database"]
+    },
+    project4: {
+      title: "Android Application Suite",
+      description: "A collection of useful Android applications developed using Kotlin, including calculators and games that demonstrate various programming concepts and user interface design.",
+      features: [
+        "2x2 Matrix Calculator with step-by-step solutions",
+        "Scientific Arithmetic Calculator",
+        "Interactive Dice Game with animations",
+        "Coin Toss App with realistic physics",
+        "Clean and intuitive user interfaces"
+      ],
+      technologies: ["Kotlin", "Android Studio", "XML", "Material Design"]
+    },
+    project5: {
+      title: "Arduino Library for MuxDemux & Shift Registers",
+      description: "A comprehensive Arduino library that simplifies the use of multiplexer/demultiplexer modules and shift registers, enabling easy expansion of I/O pins for complex projects.",
+      features: [
+        "Easy-to-use functions for MuxDemux operations",
+        "Shift register control with minimal code",
+        "Support for multiple IC types",
+        "Comprehensive documentation and examples",
+        "Optimized for performance and memory usage"
+      ],
+      technologies: ["C++", "Arduino IDE", "Digital Logic", "PCB Design"]
+    },
+    project6: {
+      title: "LoRa Based Flood Alert System",
+      description: "An early warning system for flood detection using LoRa communication technology to monitor water levels in rivers and alert authorities and residents in remote areas.",
+      features: [
+        "Long-range water level monitoring",
+        "LoRa communication for remote areas",
+        "Real-time data transmission to control center",
+        "SMS/Email alerts to authorities and residents",
+        "Solar-powered for remote deployment"
+      ],
+      technologies: ["LoRa", "Water Level Sensors", "ESP32", "Solar Power", "GSM Module"]
+    }
+  };
+  
+  const project = projectData[projectId];
+  
+  modalBody.innerHTML = `
+    <h3>${project.title}</h3>
+    <p>${project.description}</p>
+    <h4 style="color: #fed700; margin-top: 20px;">Key Features:</h4>
+    <ul style="margin-left: 20px;">
+      ${project.features.map(feature => `<li style="margin-bottom: 8px;">${feature}</li>`).join('')}
+    </ul>
+    <div class="tech-stack">
+      <h4>Technologies Used:</h4>
+      <div class="tech-tags">
+        ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+      </div>
+    </div>
+  `;
+  
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProjectModal() {
+  const modal = document.getElementById('projectModal');
+  modal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside of it
+window.onclick = function(event) {
+  const modal = document.getElementById('projectModal');
+  if (event.target == modal) {
+    closeProjectModal();
+  }
+}

@@ -240,15 +240,15 @@ profile-photo .img{
 .education-content .row{
   display: flex;
   border-radius: 5px;
-  height: 400px;
-  margin-bottom: 250px;
+  height: 200px;
+  margin-bottom: 80px;
 }
 
 .education-content .title{
   color: #fed700;
 }
 .education-content .row .education,
-.education-content .row .internship
+.education-content .row .experience
 {
   color: #e5e5e5;
   flex:0 0 50%;
@@ -266,7 +266,7 @@ profile-photo .img{
 }
 .education-content .row .timeline{
   /* background-color:#e5e5e5; */
-  padding: 30px 15px;
+  padding: 15px 15px;
   border: 1px solid #e5e5e5;
   border-radius: 10px;
   width: 100%;
@@ -275,12 +275,12 @@ profile-photo .img{
 .education-content .row .timeline-item{
   position:relative;
   padding-left: 37px;
-  padding-bottom: 50px; 
+  padding-bottom: 25px; 
 }
-.education-content .row  .internship .timeline-item{
+.education-content .row  .experience .timeline-item{
   position:relative;
   padding-left: 37px;
-  padding-bottom: 30px; 
+  padding-bottom: 15px; 
 }
 .education-content .row .timeline-item:last-child{
   padding-bottom: 0;
@@ -305,20 +305,109 @@ profile-photo .img{
 }
 .education-content .row .timeline-title  {
   font-weight: 700;
-  font-size: 18px;
-  margin-bottom: 12px;
-}
-.education-content .row .internship .timeline-title  {
-  font-weight: 700;
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 8px;
 }
-.education-content .row .timeline-text{
-  line-height: 25px;
+.education-content .row .experience .timeline-title  {
+  font-weight: 700;
   font-size: 16px;
+  margin-bottom: 6px;
+}
+.education-content .row .timeline-text{
+  line-height: 20px;
+  font-size: 14px;
   text-align: justify;
 }
 
+/*---------------------------Skills---------------------------*/
+.skills-content{
+  padding: 80px 0;
+  background-color: #1a1a1a;
+}
+
+.skills-title{
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.skills-title h4{
+  text-transform: uppercase;
+  font-size: 40px;
+  line-height: 40px;
+  color: #fed700;
+  margin-bottom: 20px;
+}
+
+.skills-title p{
+  color: #e5e5e5;
+}
+
+.skills-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.skill-category{
+  background: #202020;
+  padding: 30px;
+  border-radius: 15px;
+  border: 2px solid #333;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-category::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(254, 215, 0, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.skill-category:hover::before{
+  left: 100%;
+}
+
+.skill-category:hover{
+  border-color: #fed700;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(254, 215, 0, 0.2);
+}
+
+.skill-category h5{
+  color: #fed700;
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.skill-items{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-item{
+  background: #333;
+  color: #e5e5e5;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  border: 1px solid #444;
+}
+
+.skill-item:hover{
+  background: #fed700;
+  color: #202020;
+  transform: scale(1.05);
+}
 
 
 /*---------------------------Projects---------------------------*/
@@ -355,9 +444,27 @@ profile-photo .img{
     padding: 25px;
     text-align: center;
     flex-basis: 32%;
-    transition: .3s;
+    transition: all 0.3s ease;
     margin-bottom: 25px;
+    cursor: pointer;
+    overflow: hidden;
 }
+
+.project::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(254, 215, 0, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.project:hover::before{
+  left: 100%;
+}
+
 .project i{
   background-color: #fed700;
   width: 60px;
@@ -371,14 +478,139 @@ profile-photo .img{
   font-size: 26px;
   text-transform: capitalize;
   margin: 20px 0;
+  transition: color 0.3s ease;
 }
 .project p{
   text-align: justify;
 }
 .project:hover{
   border-color: #fed700;
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(254, 215, 0, 0.3);
 }
 
+.project:hover h4{
+  color: #fed700;
+}
+
+.project-overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(254, 215, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: #202020;
+  font-weight: bold;
+}
+
+.project:hover .project-overlay{
+  opacity: 1;
+}
+
+.project-overlay i{
+  font-size: 40px;
+  margin-bottom: 10px;
+  background: none;
+  width: auto;
+  height: auto;
+  color: #202020;
+}
+
+.project-overlay span{
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background-color: #202020;
+  margin: 5% auto;
+  padding: 30px;
+  border: 2px solid #fed700;
+  border-radius: 15px;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+  color: #e5e5e5;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.close {
+  color: #fed700;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #fff;
+}
+
+.modal h3 {
+  color: #fed700;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.modal p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.modal .tech-stack {
+  margin-top: 20px;
+}
+
+.modal .tech-stack h4 {
+  color: #fed700;
+  margin-bottom: 10px;
+}
+
+.modal .tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.modal .tech-tag {
+  background: #333;
+  color: #e5e5e5;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  border: 1px solid #444;
+}
 
 
 /*---------------------------Contact Me---------------------------*/
@@ -518,19 +750,31 @@ profile-photo .img{
   }
   .education-content .row {
     flex-direction: column;
-    height: auto;
+    height: 150px;
     margin-bottom: 50px;
   }
 
   .education-content .row .education,
-  .education-content .row .internship {
+  .education-content .row .experience {
     flex-basis: 100%;
     max-width: 100%;
     margin-top: 30px;
   }
+  
+  .skills-grid{
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
   .project{
     flex-basis: 100%;
     margin-bottom: 30px;
+  }
+  
+  .modal-content {
+    width: 95%;
+    margin: 10% auto;
+    padding: 20px;
   }
 
 }
